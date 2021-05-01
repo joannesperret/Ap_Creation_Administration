@@ -1,0 +1,46 @@
+html
+    head
+        meta(charset="utf-8")
+        title Mon application
+        link(rel="stylesheet" href="/bootstrap/css/bootstrap.min.css")
+        script(src="jquery/jquery.min.js")
+        script(src="js/index.js")
+    body(class="container-fluid")
+        div(class="row justify-content-center mt-4")
+            div(class="col-md-8") 
+    
+
+block content
+    h1 Nouveau concert
+    form(method="post" action="/concerts/addConcert")
+        div(class="row")
+            div(class="form-group col-6 container")
+              label Lieu 
+                                 
+                select(class="form-control" name="id_lieu" style="width:200%")
+                     option(name="id_lieu" value="") Choisir un lieu 
+                     option(name="id_lieu" value="5") La Cigalle
+                     option(name="id_lieu" value="6") Le Bataclan 
+                     option(name="id_lieu" value="7") Le Trianon
+                     option(name="id_lieu" value="8") La Boule Noire
+                     option(name="id_lieu" value="9") Zenith     
+            div(class="form-group col-6 container")
+                label Groupe
+                  select(class="form-control" name="id_groupe" style="width:200%")
+                    option(name="id_groupe" value="") Choisir un groupe
+                      each groupe in groupeList                  
+                       option(type="number" name="id_groupe" class="form-control" value=groupe.id) #{groupe.nom_groupe}
+        div(class="row")
+            div(class="form-group col-6")
+                label Date de concert
+                input(type="date" name="date_concert" class="form-control")
+            div(class="form-group col-6")
+                label Note
+                    select(class="form-control" name="note" style="width:200%")
+                         option(name="note" value="1") 1
+                         option(name="note" value="2") 2 
+                         option(name="note" value="3") 3
+                         option(name="note" value="4") 4 
+                         option(name="note" value="5") 5 
+                         
+        button(type="submit" class="btn btn-primary col-6") Valider          

@@ -1,0 +1,41 @@
+html
+    head
+        meta(charset="utf-8")
+        title Mon application
+        link(rel="stylesheet" href="/bootstrap/css/bootstrap.min.css")
+        link(rel="stylesheet" href="../css/style.css")
+        script(src="jquery/jquery.min.js")
+        script(src="js/index.js")
+    body(class="container-fluid")
+        div(class="row justify-content-center mt-4")
+            div(class="col-md-8")                
+                   
+        block content
+            div(class="row")
+                div(class="col-md-4")
+                    h1 Liste des articles
+                div(class="col-md-2")
+                    a(href="/concerts/addConcert" class="btn btn-primary") Ajouter un produit
+            div(class="col-6")
+                table(class="table table-bordered")
+                    tr
+                        th Designation
+                        th Description
+                        th Prix
+                        th Qté stockée
+                        th Nom photo
+                        th Photo
+                        th Action
+                    each product in productList         
+                        tr                            
+                            td= product.designation
+                            td= product.description
+                            td= product.prix
+                            td= product.qte_stockee
+                            td= product.photo                            
+                            //- td <img src='../assets/bavoir.jpg' class='thumbnail' alt='test'/>  
+                            td 
+                                //- img(src='../assets/'+product.photo , alt=product.photo) 
+                                img(src='product/'+product.photo , alt=product.photo)                                                                                          
+                            td                                
+                                 a(href='/produits/'+product.id_produit class="btn btn-danger mb-3 btn-block") Supprimer           
