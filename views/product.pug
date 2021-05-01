@@ -32,10 +32,10 @@ html
                             td= product.description
                             td= product.prix
                             td= product.qte_stockee
-                            td= product.photo                            
+                            td= product.photo_principale                            
                             //- td <img src='../assets/bavoir.jpg' class='thumbnail' alt='test'/>  
                             td 
                                 //- img(src='../assets/'+product.photo , alt=product.photo) 
-                                img(src='product/'+product.photo , alt=product.photo)                                                                                          
+                                img(src='product/'+product.photo_principale , alt=product.photo)                                                                                          
                             td                                
                                  a(href='/produits/'+product.id_produit class="btn btn-danger mb-3 btn-block") Supprimer           

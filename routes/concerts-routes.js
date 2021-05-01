@@ -47,7 +47,7 @@ router.get('/addConcert', async (req, res) => {
 
 // Route d'affichage des produits
 router.get('/produits', (req, res) => {
-  mysql.db.query('SELECT * FROM produits as pr JOIN photos as ph ON pr.id_produit = ph.id_produit WHERE role_id = 1 order by designation', 
+  mysql.db.query('SELECT * FROM produits as pr JOIN photos as ph ON pr.id_produit = ph.id_produit order by designation', 
   (err, result) => {
   if(err){
   res.status(500).json({error: err});
