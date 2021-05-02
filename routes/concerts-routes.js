@@ -6,11 +6,11 @@ const mysql = require('../database/mysql');
 // Extraction du router depuis Express
 const router = express.Router();
 
-// Route d'ajout d'un concert
+// Route d'ajout d'un produit
 
-router.post('/addConcert', (req, res) => {
-  mysql.query('INSERT INTO concerts SET ?', req.body);
-  res.redirect('/concerts');
+router.post('/addProduit', (req, res) => {
+  mysql.query('INSERT INTO produit SET ?', req.body);
+  res.redirect('/produits');
 });
 
 // Route d'affichage d'ajout d'un concert
@@ -61,8 +61,6 @@ router.get('/produits', (req, res) => {
  });
 
 
-
-
 // Route de suppression d'un produit
 router.get('/produits/:id', (req, res) => {
   mysql.db.query('DELETE FROM produits WHERE id_produit = ?',req.params.id);
@@ -70,9 +68,9 @@ router.get('/produits/:id', (req, res) => {
  });
 
    
-router.get('/addConcert', (req, res) => {
+router.get('/addProduit', (req, res) => {
 
-  res.render('../views/addConcert');
+  res.render('../views/addProduit');
   
       }); 
  

@@ -15,8 +15,8 @@ html
                 div(class="col-md-4")
                     h1 Liste des articles
                 div(class="col-md-2")
-                    a(href="/concerts/addConcert" class="btn btn-primary") Ajouter un produit
-            div(class="col-6")
+                    a(href="/addProduit" class="btn btn-primary") Ajouter un produit
+            div(class="col-12")
                 table(class="table table-bordered")
                     tr
                         th Designation
@@ -36,6 +36,8 @@ html
                             //- td <img src='../assets/bavoir.jpg' class='thumbnail' alt='test'/>  
                             td 
                                 //- img(src='../assets/'+product.photo , alt=product.photo) 
-                                img(src='product/'+product.photo_principale , alt=product.photo)                                                                                          
+                                //- img(src='product/'+product.photo_principale , alt=product.photo)
+                                //- img(src='http://localhost:3000/product/'+product.photo_principale , alt=product.photo) 
+                                img(src='http://joannesperret.alwaysdata.net/img/product/'+product.photo_principale , alt=product.photo)                                                                                    
                             td                                
                                  a(href='/produits/'+product.id_produit class="btn btn-danger mb-3 btn-block") Supprimer           
