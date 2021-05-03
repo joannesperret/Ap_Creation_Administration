@@ -64,7 +64,7 @@ router.get('/', (req, res) => {
 // Route de suppression d'un produit
 router.get('/:id', (req, res) => {
   mysql.db.query('DELETE FROM produits WHERE id_produit = ?',req.params.id);
-  res.redirect('/produits');
+  res.redirect('/');
  });
 
    
