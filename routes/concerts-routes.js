@@ -46,7 +46,7 @@ router.get('/addConcert', async (req, res) => {
 });
 
 // Route d'affichage des produits
-router.get('/produits', (req, res) => {
+router.get('/', (req, res) => {
   mysql.db.query('SELECT * FROM produits as pr JOIN photos as ph ON pr.id_produit = ph.id_produit order by designation', 
   (err, result) => {
   if(err){
@@ -62,7 +62,7 @@ router.get('/produits', (req, res) => {
 
 
 // Route de suppression d'un produit
-router.get('/produits/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   mysql.db.query('DELETE FROM produits WHERE id_produit = ?',req.params.id);
   res.redirect('/produits');
  });
