@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/jquery', express.static('node_modules/jquery/dist'));
 app.use('/bootstrap', express.static('node_modules/bootstrap/dist'));
-app.use('/assets', express.static('assets/product'));
+app.use('/assets', express.static('assets/img'));
 app.use('/css', express.static('css'));
 app.use('/product', express.static('../Api_Creation/img/product'));
 // app.use(express.static('assets/product'));
