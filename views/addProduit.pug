@@ -1,7 +1,7 @@
 html
     head
         meta(charset="utf-8")
-        title Mon application
+        title Admin | AP | Creation
         link(rel="stylesheet" href="/bootstrap/css/bootstrap.min.css")
         script(src="jquery/jquery.min.js")
         script(src="js/index.js")
@@ -11,34 +11,45 @@ html
     
 
 block content
-    h1 Nouveau produit
-    form(method="post" action="/concerts/addConcert")
+
+    div(class="row")
+        div(class="col-md-6")
+            h1 Ajouter un produit                
+        div(class="col-md-6")
+            a(href="/" class="btn btn-primary") Retour aux produits
+    
+
+    form(method="post" action="/addProduit")
         div(class="row")
             div(class="form-group col-6 container")
-              label désignation                                 
-                select(class="form-control" name="id_lieu" style="width:200%")
-                     option(name="id_lieu" value="") Choisir un lieu 
-                     option(name="id_lieu" value="5") La Cigalle
-                     option(name="id_lieu" value="6") Le Bataclan 
-                     option(name="id_lieu" value="7") Le Trianon
-                     option(name="id_lieu" value="8") La Boule Noire
-                     option(name="id_lieu" value="9") Zenith     
-            div(class="form-group col-6 container")
-                label description
-                  select(class="form-control" name="id_groupe" style="width:200%")
-                    option(name="id_groupe" value="") Choisir un groupe
-                 
+                label Désignation                                 
+                input(type="text" class="form-control" name="designation" style="width:100%")
+                        
+            div(class="input-group col-6 container")
+                label Description                   
+                textarea(class="form-control" aria-label="With textarea" name="description" style="width:100%")
+
         div(class="row")
-            div(class="form-group col-6")
-                label Date de concert
-                input(type="date" name="date_concert" class="form-control")
-            div(class="form-group col-6")
-                label Note
-                    select(class="form-control" name="note" style="width:200%")
-                         option(name="note" value="1") 1
-                         option(name="note" value="2") 2 
-                         option(name="note" value="3") 3
-                         option(name="note" value="4") 4 
-                         option(name="note" value="5") 5 
+            div(class="form-group col-6 container")
+                label Catégorie
+                select(class="form-control" name="id_lieu" style="width:100%")
+                       option(name="id_lieu" value="") Choisir une catégorie
+                           each produit in produitList            
+                            option(value=produit.id_categorie name="categorie") #{produit.categorie}                       
+
+            div(class="form-group col-6 container")
+                label Quantité stockée
+                input(type="number" class="form-control" name="quantite" style="width:100%")
+            
+        div(class="row")
+            div(class="form-group col-6 container")              
+                label Prix            
+                input(type="number" class="form-control" name="prix" style="width:100%" placeholder="€")
+                     
+
+            div(class="form-group col-6 container")
+                label Photo
+                input(type="file" class="form-control" name="photo" style="width:100%")
+        
                          
-        button(type="submit" class="btn btn-primary col-6") Valider          
+button(type="submit" class="btn btn-success col-12 container-fluid") Valider          

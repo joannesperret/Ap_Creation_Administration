@@ -6,6 +6,24 @@ const mysql = require('../database/mysql');
 // Extraction du router depuis Express
 const router = express.Router();
 
+// Route d'affichage d'ajout d'un produit
+// avec alimentation des catégories
+
+      router.get('/addProduit', async (req, res, next) => {
+        await mysql.db.query('SELECT * FROM categorie order by categorie', 
+        (err, result) => {
+        if(err){
+        res.status(500).json({error: err});
+       mysql.db.close();
+        } else {
+          const produitList = result;    
+        res.render('../views/addProduit',{produitList});
+        next();    
+        console.log(produitList);  
+              }        
+        });  
+      });
+
 // Route d'ajout d'un produit
 
 router.post('/addProduit', (req, res) => {
@@ -65,14 +83,11 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   mysql.db.query('DELETE FROM produits WHERE id_produit = ?',req.params.id);
   res.redirect('/');
- });
+ });   
 
-   
-router.get('/addProduit', (req, res) => {
 
-  res.render('../views/addProduit');
-  
-      }); 
+
+
  
 // Exportation des routes
 module.exports = router;
