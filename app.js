@@ -6,7 +6,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 // Import des routes
-const concertsRoutes = require('./routes/concerts-routes');
+const produitsRoutes = require('./routes/produits-routes');
 
 // Création de l'application
 const app = express();
@@ -27,7 +27,7 @@ app.use('/product', express.static('../Api_Creation/img/product'));
 app.set('view engine', 'pug');
 
 // Gestion des routes
-app.use('/', concertsRoutes);
+app.use('/', produitsRoutes);
 
 // Lancement de l'application
 // app.listen(3000, () => console.log('app started'));

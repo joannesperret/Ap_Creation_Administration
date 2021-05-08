@@ -14,9 +14,9 @@ html
         block content
             div(class="row")
                 div(class="col-md-6")
-                    h1 Liste des articles
+                    h1 Articles en ligne sur Ap_Creation
                 div(class="col-md-4")
-                    a(href="/addProduit" class="btn btn-success") Ajouter un produit
+                    a(href="/addProduit" class="btn btn-success") Ajouter un produit                    
             div(class="col-12")
                 table(class="table table-bordered")
                     tr
@@ -37,4 +37,5 @@ html
                             td                                
                                 img(src='http://joannesperret.alwaysdata.net/img/product/'+product.photo_principale , alt=product.photo)                                                                                    
                             td                                
-                                 a(href='/'+product.id_produit class="btn btn-danger mb-3 btn-block") Supprimer           
+                                 a(href='/'+product.id_produit class="btn btn-danger mb-3 btn-block") Supprimer
+                                 a(href='/updateProduit'+product.id_produit class="btn btn-primary mb-3 btn-block") Modifier           
