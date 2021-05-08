@@ -7,49 +7,47 @@ html
         script(src="js/index.js")
     body(class="container-fluid")
         div(class="row justify-content-center mt-4")
-            div(class="col-md-8") 
+            div(class="col-6 col-xs-12") 
     
 
 block content
 
     div(class="row")
-        div(class="col-md-6")
+        div(class="col-6 col-xs-12")
             h1 Ajouter un produit                
-        div(class="col-md-6")
+        div(class="col-6 col-xs-12")
             a(href="/" class="btn btn-primary") Retour aux produits
     
 
     form(method="post" action="/addProduit")
         div(class="row")
-            div(class="form-group col-6 container")
+            div(class="form-group col-6 col-xs-12 container")
                 label Désignation                                 
                 input(type="text" class="form-control" name="designation" style="width:100%")
                         
-            div(class="input-group col-6 container")
+            div(class="input-group col-6 col-xs-12 container")
                 label Description                   
                 textarea(class="form-control" aria-label="With textarea" name="description" style="width:100%")
 
         div(class="row")
-            div(class="form-group col-6 container")
+            div(class="form-group col-6 col-xs-12 container")
                 label Catégorie
-                select(class="form-control" name="id_lieu" style="width:100%")
-                       option(name="id_lieu" value="") Choisir une catégorie
+                select(class="form-control" name="categorie" style="width:100%")
+                       option(name="categorie" value="") Choisir une catégorie
                            each produit in produitList            
                             option(value=produit.id_categorie name="categorie") #{produit.categorie}                       
 
-            div(class="form-group col-6 container")
+            div(class="form-group col-6 col-xs-12 container")
                 label Quantité stockée
-                input(type="number" class="form-control" name="quantite" style="width:100%")
+                input(type="number" class="form-control" name="qte_stockee" style="width:100%")
             
         div(class="row")
-            div(class="form-group col-6 container")              
+            div(class="form-group col-6 col-xs-12 container")              
                 label Prix            
                 input(type="number" class="form-control" name="prix" style="width:100%" placeholder="€")
                      
 
-            div(class="form-group col-6 container")
-                label Photo
-                input(type="file" class="form-control" name="photo" style="width:100%")
-        
-                         
-button(type="submit" class="btn btn-success col-12 container-fluid") Valider          
+            //- div(class="form-group col-6 col-xs-12 container")
+            //-     label Photo
+            //-     input(type="file" class="form-control" name="photo" style="width:100%")                         
+        button(type="submit" class="btn btn-success col-6 col-xs-12 container-fluid") Valider          

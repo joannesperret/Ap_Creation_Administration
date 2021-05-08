@@ -27,7 +27,7 @@ const router = express.Router();
 // Route d'ajout d'un produit
 
 router.post('/addProduit', (req, res) => {
-  mysql.query('INSERT INTO produit SET ?', req.body);
+  mysql.query('INSERT INTO produits SET ?', req.body);
   res.redirect('/produits');
 });
 
