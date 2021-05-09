@@ -7,17 +7,21 @@ html
         script(src="js/index.js")
     body(class="container-fluid")
         div(class="row justify-content-center mt-4")
-            div(class="col-md-12") 
+            div(class="col-md-8") 
     
 
 block content
-h1(class="col-md-12 container-fluid") Ajouter un produit 
-div(class="row")        
-    form(method="post" action="/addProduit")
-        div(class="row")  
-                    
-        a(href="/" class="btn btn-primary col-md-6 container-fluid") Retour aux produits 
+
+        div(class="row")
+            div(class="col-md-6")
+               h1 Ajouter un article
+            div(class="col-md-6")
+               a(href="/" class="btn btn-primary col-md-6 container-fluid") Retour aux produits 
+ 
         
+form(method="post" action="/addProduit")
+        div(class="row")                      
+               
         div(class="row")
             div(class="form-group col-md-6 container")
                 label Désignation                                 
