@@ -1,4 +1,6 @@
 const mysql = require('mysql2');
+// const promise = require('mysql2/promise');
+// const promise = require('util').promisify;
 
 const db = mysql.createConnection({
   host: 'mysql-joannesperret.alwaysdata.net',
@@ -21,4 +23,5 @@ const query = async (sql, params, res) => {
 module.exports = {
   query,
   db,
+  // promise
 };

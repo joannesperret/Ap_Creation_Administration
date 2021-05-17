@@ -3,14 +3,17 @@ const express = require('express');
 // Import de la connexion à MySQL
 const mysql = require('../database/mysql');
 
+// Import de la promesse
+const promise = require('../database/mysql');
+
 // Extraction du router depuis Express
 const router = express.Router();
 
 // Route d'affichage d'ajout d'un produit
 // avec alimentation des catégories
 
-router.get('/addProduit', async (req, res) => {
-  await mysql.db.query('SELECT * FROM categorie order by categorie',
+router.get('/addProduit', (req, res) => {
+  mysql.db.query('SELECT * FROM categorie order by categorie',
     (err, result) => {
       if (err) {
         res.status(500).json({ error: err });
@@ -24,20 +27,39 @@ router.get('/addProduit', async (req, res) => {
 });
 
 // Route d'ajout d'un produit
-
-router.post('/addProduit', (req, res) => {
-  const data = {
+// Création de l'article
+router.post('/addProduit',(req, res) => {
+  const donnees = {
     designation: req.body.designation,
     description: req.body.description,
     prix: req.body.prix,
     qte_stockee: req.body.qte_stockee,
     categorie: req.body.categorie
     };
-  mysql.query('INSERT INTO produits SET ?', [data]);
-  
-  res.redirect('/produits');
+  mysql.query('Insert INTO produits SET ?', [donnees],(err, data) => {
+    res.status(200).json(data);
+  });
+    
+res.redirect('/produits');  
   
 });
+
+router.get('/film/:id([0-9]+)', (req, res) => {
+  mysql.query(
+    'SELECT * FROM films WHERE id=?',
+    [req.params.id],
+    (err, data) => {
+      res.status(200).json(data);
+    }
+  );
+});
+
+
+// Route de suppression d'un produit
+router.get('/:id', (req, res) => {
+  mysql.db.query('DELETE FROM produits WHERE id_produit = ?',req.params.id);
+  res.redirect('/');
+ });
 
 
 // Route d'affichage des produits
@@ -50,17 +72,13 @@ router.get('/', (req, res) => {
   } else {
   const productList = result;
   res.render('../views/product',{productList});
-  console.log(productList);
+ // console.log(productList);
       }
   });
  });
 
 
-// Route de suppression d'un produit
-router.get('/:id', (req, res) => {
-  mysql.db.query('DELETE FROM produits WHERE id_produit = ?',req.params.id);
-  res.redirect('/');
- });
+
 
 // Exportation des routes
 module.exports = router;
